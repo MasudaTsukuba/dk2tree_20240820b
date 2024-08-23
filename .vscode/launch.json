@@ -1,0 +1,132 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch Python Main",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "args": ["sample_input_2024082016.txt", "python_output_2024082016.txt", "positive.txt", "negative.txt", "1001"],
+            // "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            // "environment": [],
+            // "externalConsole": false,
+            // "MIMode": "lldb",
+            // "preLaunchTask": "build",
+            // "setupCommands": [
+            //     {
+            //         "description": "Enable pretty-printing for lldb",
+            //         "text": "settings set target.inline-breakpoint-strategy always",
+            //         "ignoreFailures": true
+            //     }
+            // ],
+            // "logging": {
+            //     "engineLogging": true,
+            //     "trace": true,
+            //     "traceResponse": true
+            // }
+        },
+        {
+            "name": "(lldb) Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/main",
+            "args": ["input.txt", "output.txt", "positive.txt", "negative.txt", "10"],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb",
+            "preLaunchTask": "build",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for lldb",
+                    "text": "settings set target.inline-breakpoint-strategy always",
+                    "ignoreFailures": true
+                }
+            ],
+            "logging": {
+                "engineLogging": true,
+                "trace": true,
+                "traceResponse": true
+            }
+        },
+        {
+            "name": "(lldb) Launch Main 2024082015",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/main",
+            "args": ["sample_input_2024082016.txt", "sample_output_2024082016.txt", "positive.txt", "negative.txt", "1001"],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            // "MIMode": "lldb",
+            "MIMode": "gdb",
+            "miDebuggerPath": "/usr/bin/gdb",  ////
+            "preLaunchTask": "build",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for lldb",
+                    "text": "settings set target.inline-breakpoint-strategy always",
+                    "ignoreFailures": true
+                }
+            ],
+            "logging": {
+                "engineLogging": true,
+                "trace": true,
+                "traceResponse": true
+            }
+        },
+        {
+            "name": "(lldb) Launch BitVector",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/bitvector_main",
+            "args": ["input.txt", "output.txt", "positive.txt", "negative.txt", "10"],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb",
+            "preLaunchTask": "bitvector_build",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for lldb",
+                    "text": "settings set target.inline-breakpoint-strategy always",
+                    "ignoreFailures": true
+                }
+            ],
+            "logging": {
+                "engineLogging": true,
+                "trace": true,
+                "traceResponse": true
+            }
+        },
+        {
+            "name": "(lldb) Launch DKTreeMain",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/dktree_main",
+            "args": ["input.txt", "output.txt", "positive.txt", "negative.txt", "10"],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb",
+            "preLaunchTask": "dktreemain_build",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for lldb",
+                    "text": "settings set target.inline-breakpoint-strategy always",
+                    "ignoreFailures": true
+                }
+            ],
+            "logging": {
+                "engineLogging": true,
+                "trace": true,
+                "traceResponse": true
+            }
+        }
+    ]
+}

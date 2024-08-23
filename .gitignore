@@ -1,0 +1,53 @@
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# CMake stuff
+CMakeFiles
+cmake-build-debug
+.idea
+CMakeCache.txt
+Makefile
+cmake_install.cmake
+fm_index-file.sdsl
+fm_index-file.sdsl.html
+untitled
+untitled.cbp
+dk2tree
+dk2tree.cbp
+dktreemain_main.dSYM/Contents/Resources/._DWARF
+dktreemain_main.dSYM/Contents/Resources/._Relocations
+dktreemain_main.dSYM/Contents/Resources/DWARF/._dktreemain_main
+dktreemain_main.dSYM/Contents/Resources/Relocations/._aarch64
+dktreemain_main.dSYM/Contents/Resources/Relocations/aarch64/._dktreemain_main.yml
+build/.DS_Store
+.DS_Store

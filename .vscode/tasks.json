@@ -1,0 +1,112 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "/usr/bin/g++",
+            "args": [
+                "-g",
+                "main.cpp",
+                "BitVector.cpp",
+                "LTree.cpp",
+                "TTree.cpp",
+                // "DKTree.cpp",
+                "Timer.cpp",
+                "-o",
+                "main"
+            ],
+            "group": "build",
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "detail": "Generated task by VS Code."
+        },
+        {
+            "type": "cppbuild",
+            "label": "C/C++: g++ アクティブなファイルのビルド",
+            "command": "/usr/bin/g++",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "デバッガーによって生成されたタスク。"
+        },
+        {
+            "label": "build_clang",
+            "type": "shell",
+            "command": "clang++",
+            "args": [
+                "-g",
+                "main.cpp",
+                "BitVector.cpp",
+                // "LTree.cpp",
+                // "TTree.cpp",
+                // "DKTree.cpp",
+                "Timer.cpp",
+                "-o",
+                "main"
+            ],
+            "group": "build",
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "detail": "Generated task by VS Code."
+        },
+        {
+            "label": "bitvector_build",
+            "type": "shell",
+            "command": "clang++",
+            "args": [
+                "-g",
+                "BitVectorMain.cpp",
+                "BitVector.cpp",
+                // "LTree.cpp",
+                // "TTree.cpp",
+                // "DKTree.cpp",
+                // "Timer.cpp",
+                "-o",
+                "bitvector_main"
+            ],
+            "group": "build",
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "detail": "Generated task by VS Code."
+        },
+        {
+            "label": "dktreemain_build",
+            "type": "shell",
+            "command": "clang++",
+            "args": [
+                "-g",
+                "DKTreeMain.cpp",
+                "BitVector.cpp",
+                "LTree.cpp",
+                "TTree.cpp",
+                // "DKTree.cpp",
+                // "Timer.cpp",
+                "-o",
+                "dktree_main"
+            ],
+            "group": "build",
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "detail": "Generated task by VS Code."
+        }
+    ]
+}

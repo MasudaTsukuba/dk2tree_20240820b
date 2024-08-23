@@ -1,0 +1,9 @@
+running /media/masuda/HDS2-UT/vscode/dk2tree_20240820b/main.py
+number of nodes = 1001
+processing sample_input_2024082016.txt
+sample_input_2024082016.txt has size: 5465
+sample_input_2024082016.txt average time to add an edge:				6.9141387939453125e-06
+sample_input_2024082016.txt average time to delete an edge:			6.834665934244792e-06
+sample_input_2024082016.txt average time to report 1 negative edge:	5.8015187581380206e-06
+sample_input_2024082016.txt average time to report 1 positive edge:	3.258387247721354e-06
+sample_input_2024082016.txt average time to report all edge:			0.0010232925415039062
