@@ -5,9 +5,9 @@
 #ifndef DK2TREE_TTREE_H
 #define DK2TREE_TTREE_H
 
+#include "BitVector.h"
 #include <utility>
 #include "Parameters.h"
-#include "BitVector.h"
 
 /// Record type containing the number pf preceding bits and ones, and the
 /// index of a child node in the parent's `entries` list

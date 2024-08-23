@@ -179,7 +179,7 @@ BitVector::insert(unsigned long begin, const BitVector &from, unsigned long lo,
     insert(begin, hi - lo);
     for (u64 idx = 0; idx + lo < hi; idx++) {
         // set(idx + begin, from[idx + lo]);
-        set(idx + begin, from.get(idx + lo));
+        set(idx + begin, from.get(idx + lo));  ////
     }
     recompute(begin);
 }

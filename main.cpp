@@ -48,9 +48,9 @@ int main(int argc, char **argv) {
     negEdgesFile.seekg(0, ios::beg);
     while (negEdgesFile >> from >> to) {
         timer.start();
-        if(from == 10){
-            int xxx = 0;
-        }
+        if(from == 10){  //// debug
+            int xxx = 0;  //// debug
+        }  //// debug
         tree->removeEdge(from, to);
         timer.stop();
         counter++;

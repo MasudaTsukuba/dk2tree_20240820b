@@ -19,7 +19,7 @@ TTree::Node::Node(TTree *P1, TTree *P2) {
 }
 
 // TTree::Node::Node(BitVector<> bv) {
-TTree::Node::Node(BitVector bv) {
+TTree::Node::Node(BitVector bv) {  ////
     this->internalNode = nullptr;
     this->leafNode = new LeafNode(bv);
 }
@@ -29,21 +29,21 @@ TTree::Node::Node(unsigned long size) {
     this->leafNode = new LeafNode(size);
 }
 
-InternalNode::InternalNode(){
-    size = 0;
-    for(int i = 0; i < length0; i++){
-        entries[i] = Entry();
-    }
-}
+InternalNode::InternalNode(){  ////
+    size = 0;  ////
+    for(int i = 0; i < length0; i++){  ////
+        entries[i] = Entry();  ////
+    }  ////
+}  ////
 
 // InternalNode::InternalNode(TTree *left, TTree *right, TTree *parent) :
 //         size(2),
 //         entries{Entry(left), Entry(right), Entry()} {
-InternalNode::InternalNode(TTree *left, TTree *right, TTree *parent){
-    size = 2;
-    entries[0] = Entry(left);
-    entries[1] = Entry(right);
-    entries[2] = Entry();
+InternalNode::InternalNode(TTree *left, TTree *right, TTree *parent){  ////
+    size = 2;  ////
+    entries[0] = Entry(left);  ////
+    entries[1] = Entry(right);  ////
+    entries[2] = Entry();  ////
     left->parent = parent;
     left->indexInParent = 0;
     right->parent = parent;
@@ -104,12 +104,12 @@ InternalNode::Entry TTree::findLeaf(unsigned long n, std::vector<Nesbo> *path) {
             onesBefore += record.o;
             current = current->node.internalNode->entries[record.i].P;
         }
-        InternalNode::Entry entry;
-        entry.b = bitsBefore;
-        entry.o = onesBefore;
-        entry.P = current;
+        InternalNode::Entry entry;  ////
+        entry.b = bitsBefore;  ////
+        entry.o = onesBefore;  ////
+        entry.P = current;  ////
         // return {bitsBefore, onesBefore, current};
-        return entry;
+        return entry;  ////
     } else {
         return findLeaf2(n, *path);
     }
@@ -178,14 +178,14 @@ unsigned long TTree::rank1(unsigned long n, std::vector<Nesbo> *path) {
 bool TTree::access(unsigned long n, std::vector<Nesbo> *path) {
     auto entry = findLeaf(n, path);
     // return entry.P->node.leafNode->bv[n - entry.b];
-    return entry.P->node.leafNode->bv.get(n - entry.b);
+    return entry.P->node.leafNode->bv.get(n - entry.b);  ////
 }
 
 bool TTree::setBit(unsigned long n, bool b, std::vector<Nesbo> *path) {
     // Find the leaf node that contains this bit
     auto entry = findLeaf(n, path);
     // BitVector<> &bv = entry.P->node.leafNode->bv;
-    BitVector &bv = entry.P->node.leafNode->bv;
+    BitVector &bv = entry.P->node.leafNode->bv;  ////
     bool changed = bv.set(n - entry.b, b);
 
     if (changed) {
@@ -573,9 +573,9 @@ void TTree::moveLeftLeaf() {
     TTree *sibling = parent->node.internalNode->entries[idx - 1].P;
     // Take the first k*k block of `this`, and append it to `sibling`
     // BitVector<> &right = node.leafNode->bv;
-    BitVector &right = node.leafNode->bv;
+    BitVector &right = node.leafNode->bv;  ////
     // BitVector<> &left = sibling->node.leafNode->bv;
-    BitVector &left = sibling->node.leafNode->bv;
+    BitVector &left = sibling->node.leafNode->bv;  ////
     unsigned long d_b = BLOCK_SIZE;
     unsigned long d_o = right.rank1(BLOCK_SIZE);
     left.append(right, 0, BLOCK_SIZE);
@@ -594,9 +594,9 @@ void TTree::moveRightLeaf() {
     TTree *sibling = parent->node.internalNode->entries[idx + 1].P;
     // Take the first k*k block of `this`, and append it to `sibling`
     // BitVector<> &left = node.leafNode->bv;
-    BitVector &left = node.leafNode->bv;
+    BitVector &left = node.leafNode->bv;  ////
     // BitVector<> &right = sibling->node.leafNode->bv;
-    BitVector &right = sibling->node.leafNode->bv;
+    BitVector &right = sibling->node.leafNode->bv;  ////
     unsigned long hi = left.size();
     unsigned long lo = hi - BLOCK_SIZE;
     unsigned long d_b = BLOCK_SIZE;
@@ -641,10 +641,10 @@ TTree *TTree::splitInternal() {
     } else {
         parent->node.internalNode->entries[indexInParent].b -= d_b;
         parent->node.internalNode->entries[indexInParent].o -= d_o;
-        InternalNode::Entry entry;
-        entry.b = d_b;
-        entry.o = d_o;
-        entry.P = newNode;
+        InternalNode::Entry entry;  ////
+        entry.b = d_b;  ////
+        entry.o = d_o;  ////
+        entry.P = newNode;  ////
         // parent->node.internalNode->insert(indexInParent + 1,
         //                                   {d_b, d_o, newNode});
         parent->node.internalNode->insert(indexInParent + 1, entry);  ////
@@ -658,7 +658,7 @@ TTree *TTree::splitLeaf() {
     mid -= mid % BLOCK_SIZE;
     auto &left = this->node.leafNode->bv;
     // auto right = BitVector<>(left, mid, n);
-    auto right = BitVector(left, mid, n);
+    auto right = BitVector(left, mid, n);  ////
     left.erase(mid, n);
     auto *newNode = new TTree(right);
     if (parent == nullptr) {

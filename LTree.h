@@ -5,9 +5,9 @@
 #ifndef DK2TREE_LTREE_H
 #define DK2TREE_LTREE_H
 
+#include "BitVector.h"
 #include <utility>
 #include "Parameters.h"
-#include "BitVector.h"
 using namespace std; ////
 
 /// LRecord type containing the number pf preceding bits, and the
@@ -78,7 +78,7 @@ struct LInternalNode {
     Entry entries[nodeSizeMax + 1];
 
     /// The default constructor creates an empty internal node
-    LInternalNode();
+    LInternalNode();  ////
     // LInternalNode() :
     //         size(0),
     //         entries{Entry()} {}
@@ -138,16 +138,16 @@ struct LInternalNode {
 };
 
 /** A leaf node, which consists of a BitVector<> (represented by vector<bool>) */
-class LLeafNode {
+class LLeafNode {  ////
 // struct LLeafNode {
-public:
+public:  ////
     // BitVector<> bv;
     BitVector bv;
 
     /**
      * Constructs a leaf with the given number of bits
      */
-    explicit LLeafNode(unsigned long size);
+    explicit LLeafNode(unsigned long size);  ////
     // explicit LLeafNode(unsigned long size) :
     //         bv(size) {}
 
@@ -155,7 +155,7 @@ public:
      * Constructs a leaf node from the given bit vector
      * @param bv the BitVector<> to be moved into this leaf node
      */
-    explicit LLeafNode(BitVector bv);
+    explicit LLeafNode(BitVector bv);  ////
     // explicit LLeafNode(BitVector bv) :
     //         bv(bv) {}
 
@@ -168,9 +168,9 @@ public:
 
 /** LTree is the struct representing a single node (leaf or internal) of the LTree */
 /** A single node is either an internal or leaf node, as indicated by the isLeaf value */
-class LTree {
+class LTree {  ////
 // struct LTree {
-public:
+public:  ////
     bool isLeaf;
     LTree *parent = nullptr;
     unsigned long indexInParent = 0;
@@ -184,7 +184,7 @@ public:
         Node(LTree *, LTree *);
 
         // explicit Node(BitVector<>);
-        explicit Node(BitVector);
+        explicit Node(BitVector);  ////
 
         explicit Node(unsigned long);
     } node;
@@ -192,7 +192,7 @@ public:
     /**
      * Constructs an empty leaf node
      */
-    LTree();
+    LTree();  ////
     // LTree() :
     //         isLeaf(true),
     //         node() {}
@@ -202,7 +202,7 @@ public:
      * @param left the first child of this node
      * @param right the second child of this node
      */
-    LTree(LTree *left, LTree *right);
+    LTree(LTree *left, LTree *right);  ////
     // LTree(LTree *left, LTree *right) :
     //         isLeaf(false),
     //         node(left, right) {
@@ -216,7 +216,7 @@ public:
      * Constructs a leaf node with the given bit vector
      * @param bv the bit vector to be moved into this leaf node
      */
-    explicit LTree(BitVector bv);
+    explicit LTree(BitVector bv);  ////
     // explicit LTree(BitVector bv) :
     //         isLeaf(true),
     //         node(bv) {}
@@ -225,7 +225,7 @@ public:
      * Constructs an all-zeros leaf node with the specified size
      * @param size the size of this leaf node in bits
      */
-    explicit LTree(unsigned long size);
+    explicit LTree(unsigned long size);  ////
     // explicit LTree(unsigned long size) :
     //         isLeaf(true),
     //         node(size) {}

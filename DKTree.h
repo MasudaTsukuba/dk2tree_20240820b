@@ -66,8 +66,6 @@ public:
 
     ~DKTree();
 
-    std::vector<unsigned long> get_findings_global();  ////
-
     /**
      * Adds an edge from a to b
      * @param a the row of the edge to be added
@@ -109,13 +107,7 @@ public:
      */
     // vector<std::pair<unsigned long, unsigned long> >
     std::vector<unsigned long>
-    // void
     reportAllEdges(const std::vector<unsigned long> &A, const std::vector<unsigned long> &B);
-
-    // vector<unsigned long> 
-    // void
-    // int*
-    // reportAllEdges2(const std::vector<unsigned long>& A, const std::vector<unsigned long>& B);
 
 
     /**
@@ -253,8 +245,6 @@ private:
    */
     void findAllEdges(VectorData &rows, VectorData &columns,
                       std::vector<unsigned long> &findings);  ////
-    // void findAllEdges2(VectorData &rows, VectorData &columns);  ////
-                    //   vector<std::pair<unsigned long, unsigned long> > &findings);
 
     /**
   * checks that all elements in element are present in the matrix, sorts them and deletes doubles
@@ -282,8 +272,6 @@ private:
    */
     void findEdgesInLTree(const VectorData &rows, const VectorData &columns,
                           std::vector<unsigned long> &findings);
-    // void findEdgesInLTree2(const VectorData &rows, const VectorData &columns);  ////
-                        //   vector<std::pair<unsigned long, unsigned long> > &findings);
 
     /**
    * Deletes all edges from row in rows to column in columns

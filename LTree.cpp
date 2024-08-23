@@ -18,7 +18,7 @@ LTree::Node::Node(LTree *P1, LTree *P2) {
 }
 
 // LTree::Node::Node(BitVector<> bv) {
-LTree::Node::Node(BitVector bv) {
+LTree::Node::Node(BitVector bv) {  ////
     this->internalNode = nullptr;
     this->leafNode = new LLeafNode(bv);
 }
@@ -28,21 +28,21 @@ LTree::Node::Node(unsigned long size) {
     this->leafNode = new LLeafNode(size);
 }
 
-LInternalNode::LInternalNode(){
-    size = 0;
-    for(int i = 0; i < length0; i++){
-        entries[i] = Entry();
-    }
-}
+LInternalNode::LInternalNode(){  ////
+    size = 0;  ////
+    for(int i = 0; i < length0; i++){  ////
+        entries[i] = Entry();  ////
+    }  ////
+}  ////
 
 // LInternalNode::LInternalNode(LTree *left, LTree *right, LTree *parent) :
 LInternalNode::LInternalNode(LTree *left, LTree *right, LTree *parent){
         // size(2),
         // entries{Entry(left), Entry(right), Entry()} {
-    size = 2;
-    entries[0] = Entry(left);
-    entries[1] = Entry(right);
-    entries[2] = Entry();
+    size = 2;  ////
+    entries[0] = Entry(left);  ////
+    entries[1] = Entry(right);  ////
+    entries[2] = Entry();  ////
     left->parent = parent;
     left->indexInParent = 0;
     right->parent = parent;
@@ -139,11 +139,11 @@ LInternalNode::Entry LTree::findLeaf(unsigned long n, std::vector<LNesbo> *path)
             bitsBefore += record.b;
             current = current->node.internalNode->entries[record.i].P;
         }
-        LInternalNode::Entry entry;
-        entry.b = bitsBefore;
-        entry.P = current;
+        LInternalNode::Entry entry;  ////
+        entry.b = bitsBefore;  ////
+        entry.P = current;  ////
         // return {bitsBefore, current};
-        return entry;
+        return entry;  ////
     } else {
         return findLeaf2(n, *path);
     }
@@ -192,24 +192,24 @@ LInternalNode::Entry LTree::findLeaf2(unsigned long n, std::vector<LNesbo> &path
         path.emplace_back(current, record.i, next.b, bitsBefore);
         current = next.P;
     }
-    LInternalNode::Entry entry;
-    entry.b = bitsBefore;
-    entry.P = current;
+    LInternalNode::Entry entry;  ////
+    entry.b = bitsBefore;  ////
+    entry.P = current;  ////
     // return {bitsBefore, current};
-    return entry;
+    return entry;  ////
 }
 
 bool LTree::access(unsigned long n, std::vector<LNesbo> *path) {
     auto entry = findLeaf(n, path);
     // return entry.P->node.leafNode->bv[n - entry.b];
-    return entry.P->node.leafNode->bv.get(n - entry.b);
+    return entry.P->node.leafNode->bv.get(n - entry.b);  ////
 }
 
 bool LTree::setBit(unsigned long n, bool b, std::vector<LNesbo> *path) {
     // Find the leaf node that contains this bit
     auto entry = findLeaf(n, path);
     // BitVector<> &bv = entry.P->node.leafNode->bv;
-    BitVector &bv = entry.P->node.leafNode->bv;
+    BitVector &bv = entry.P->node.leafNode->bv;  ////
     bool changed = bv.set(n - entry.b, b);
 
     return changed;
@@ -351,9 +351,9 @@ LInternalNode::Entry LInternalNode::popLast() {
 
 void LInternalNode::insert(unsigned long idx, LInternalNode::Entry entry) {
     // Move everything from idx onwards right
-    if(size > 3){
-        int xxx = 0;
-    }
+//    if(size > 3){  ////
+//        int xxx = 0;  ////
+//    }  ////
     for (unsigned long i = size; i > idx; i--) {
         entries[i] = entries[i - 1];
         entries[i].P->indexInParent = i;
@@ -517,9 +517,9 @@ void LTree::moveLeftLeaf() {
     LTree *sibling = parent->node.internalNode->entries[idx - 1].P;
     // Take the first k*k block of `this`, and append it to `sibling`
     // BitVector<> &right = node.leafNode->bv;
-    BitVector &right = node.leafNode->bv;
+    BitVector &right = node.leafNode->bv;  ////
     // BitVector<> &left = sibling->node.leafNode->bv;
-    BitVector &left = sibling->node.leafNode->bv;
+    BitVector &left = sibling->node.leafNode->bv;  ////
     unsigned long d_b = BLOCK_SIZE;
     left.append(right, 0, BLOCK_SIZE);
     right.erase(0, BLOCK_SIZE);
@@ -534,9 +534,9 @@ void LTree::moveRightLeaf() {
     LTree *sibling = parent->node.internalNode->entries[idx + 1].P;
     // Take the first k*k block of `this`, and append it to `sibling`
     // BitVector<> &left = node.leafNode->bv;
-    BitVector &left = node.leafNode->bv;
+    BitVector &left = node.leafNode->bv;  ////
     // BitVector<> &right = sibling->node.leafNode->bv;
-    BitVector &right = sibling->node.leafNode->bv;
+    BitVector &right = sibling->node.leafNode->bv;  ////
     unsigned long hi = left.size();
     unsigned long lo = hi - BLOCK_SIZE;
     unsigned long d_b = BLOCK_SIZE;
@@ -575,9 +575,9 @@ LTree *LTree::splitInternal() {
         return newRoot;
     } else {
         parent->node.internalNode->entries[indexInParent].b -= d_b;
-        LInternalNode::Entry entry;
-        entry.b = d_b;
-        entry.P = newNode;
+        LInternalNode::Entry entry;  ////
+        entry.b = d_b;  ////
+        entry.P = newNode;  ////
         // parent->node.internalNode->insert(indexInParent + 1,
         //                                   {d_b, newNode});
         parent->node.internalNode->insert(indexInParent + 1, entry);  ////
@@ -591,7 +591,7 @@ LTree *LTree::splitLeaf() {
     mid -= mid % BLOCK_SIZE;
     auto &left = this->node.leafNode->bv;
     // auto right = BitVector<>(left, mid, n);
-    auto right = BitVector(left, mid, n);
+    auto right = BitVector(left, mid, n);  ////
     left.erase(mid, n);
     auto *newNode = new LTree(right);
     if (parent == nullptr) {
